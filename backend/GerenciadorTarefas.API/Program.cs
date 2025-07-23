@@ -15,6 +15,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<ITarefaRepository, TarefaRepository>();
 builder.Services.AddScoped<CriarTarefaHandler>();
+builder.Services.AddScoped<EditarTarefaHandler>();
+builder.Services.AddScoped<ListarTarefaHandler>();
+builder.Services.AddScoped<RemoverTarefaHandler>();
+builder.Services.AddScoped<AlterarStatusTarefaHandler>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));

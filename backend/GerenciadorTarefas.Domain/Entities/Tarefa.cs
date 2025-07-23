@@ -10,6 +10,7 @@ namespace GerenciadorTarefas.Domain.Entities
         public string Descricao { get; private set; }
         public StatusTarefa Status { get; private set; }
         public DateTime DataCriacao { get; private set; }
+        public DateTime? DataAtualizacao { get; set; }
         public DateTime? DataConclusao { get; set; }
         private Tarefa() { }
 
@@ -22,11 +23,17 @@ namespace GerenciadorTarefas.Domain.Entities
             Status = StatusTarefa.Pendente; 
         }
 
-        public void Atualizar(string titulo, string descricao)
+        public void Atualizar(string? titulo, string? descricao)
         {
-            Titulo = titulo;
-            Descricao = descricao;
+            if (!string.IsNullOrWhiteSpace(titulo))
+                Titulo = titulo;
+
+            if (!string.IsNullOrWhiteSpace(descricao))
+                Descricao = descricao;
+
+            DataAtualizacao = DateTime.UtcNow;
         }
+
 
         public void MarcarComoConcluida()
         {

@@ -4,6 +4,7 @@ CREATE TABLE Tarefas (
 	Descricao TEXT,
 	Status VARCHAR(20) NOT NULL,
 	DataCriacao TIMESTAMP DEFAULT NOW(),
+	DataAtualizacao TIMESTAMP,
     DataConclusao TIMESTAMP
 
 );

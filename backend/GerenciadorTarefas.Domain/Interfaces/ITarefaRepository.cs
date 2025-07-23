@@ -10,10 +10,10 @@ namespace GerenciadorTarefas.Domain.Interfaces
 {
     public interface ITarefaRepository
     {
+        Task AdicionarAsync(Tarefa tarefa);
         Task<IEnumerable<Tarefa>> ObterTodasAsync();
         Task<Tarefa> ObterPorIdAsync(Guid id);
         Task<IEnumerable<Tarefa>> ObterPorStatusAsync(StatusTarefa status);
-        Task AdicionarAsync(Tarefa tarefa);
         Task AtualizarAsync(Tarefa tarefa);
         Task RemoverAsync(Guid id);
     }
