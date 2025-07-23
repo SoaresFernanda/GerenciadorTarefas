@@ -1,0 +1,9 @@
+CREATE TABLE Tarefas (
+	Id SERIAL PRIMARY KEY,
+	Titulo VARCHAR(100) NOT NULL,
+	Descricao TEXT,
+	Status VARCHAR(20) NOT NULL,
+	DataCriacao TIMESTAMP DEFAULT NOW(),
+    DataConclusao TIMESTAMP
+
+);
