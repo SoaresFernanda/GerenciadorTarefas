@@ -58,7 +58,7 @@ namespace GerenciadorTarefas.API.Controllers
         {
             var resultado = await _alterarStatusHandler.Handle(id, command.NovoStatus.ToString());
             if (resultado)
-                return Ok("Status da tarefa alterado com sucesso");
+                return NoContent();
             else
                 return NotFound("Tarefa não encontrada ou status inválido");
         }

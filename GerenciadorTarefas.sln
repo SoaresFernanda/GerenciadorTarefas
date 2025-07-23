@@ -9,8 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "frontend", "frontend", "{29
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{D287276D-FA1E-4880-887A-77A5AB36D7C8}"
 	ProjectSection(SolutionItems) = preProject
-		CREATE TABLE Tarefas.SQL = CREATE TABLE Tarefas.SQL
-		Readme.md = Readme.md
+		docs\CREATE TABLE Tarefas.SQL = docs\CREATE TABLE Tarefas.SQL
+		docs\Readme.md = docs\Readme.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciadorTarefas.API", "backend\GerenciadorTarefas.API\GerenciadorTarefas.API.csproj", "{FA40B49C-BFBB-477E-914E-9E35139DC054}"
