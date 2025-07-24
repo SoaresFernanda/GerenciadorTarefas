@@ -47,7 +47,7 @@ namespace GerenciadorTarefas.API.Controllers
             var resultado = await _editarHandler.Handle(id, command.NovoTitulo, command.NovaDescricao);
 
             if (resultado)
-                return Ok("Tarefa editada com sucesso");
+                return NoContent();
 
             return NotFound("Tarefa não encontrada");
         }
@@ -68,7 +68,7 @@ namespace GerenciadorTarefas.API.Controllers
         {
             var resultado = await _removerTarefaHandler.Handle(id);
             if (resultado)
-                return Ok("Tarefa removida com sucesso");
+                return NoContent();
             else
                 return NotFound("Tarefa não encontrada");
         }

@@ -34,16 +34,15 @@ namespace GerenciadorTarefas.Domain.Entities
             DataAtualizacao = DateTime.UtcNow;
         }
 
-
-        public void MarcarComoConcluida()
-        {
-            Status = StatusTarefa.Concluida;
-            DataConclusao = DateTime.UtcNow;
-        }
-
         public void AlterarStatus(StatusTarefa novoStatus)
         {
             Status = novoStatus;
+
+            if (novoStatus == StatusTarefa.Concluida)
+                DataConclusao = DateTime.UtcNow;
+            else
+                DataConclusao = null;
         }
+
     }
 }
