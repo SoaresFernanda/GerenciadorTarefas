@@ -1,4 +1,4 @@
-@GerenciadorTarefas.API_HostAddress = http://localhost:5144
+@GerenciadorTarefas.API_HostAddress = http://localhost:5000
 
 GET {{GerenciadorTarefas.API_HostAddress}}/tarefa
 Accept: application/json

@@ -4,13 +4,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.14.36301.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		Dockerfile = Dockerfile
+		docs\Readme.md = docs\Readme.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "frontend", "frontend", "{292A2AC0-6E54-4240-9FAA-599137548ED7}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{D287276D-FA1E-4880-887A-77A5AB36D7C8}"
 	ProjectSection(SolutionItems) = preProject
-		docs\CREATE TABLE Tarefas.SQL = docs\CREATE TABLE Tarefas.SQL
-		docs\Readme.md = docs\Readme.md
+		frontend\Dockerfile = frontend\Dockerfile
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{D287276D-FA1E-4880-887A-77A5AB36D7C8}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+		docs\init.sql = docs\init.sql
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciadorTarefas.API", "backend\GerenciadorTarefas.API\GerenciadorTarefas.API.csproj", "{FA40B49C-BFBB-477E-914E-9E35139DC054}"

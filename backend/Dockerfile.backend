@@ -1,0 +1,22 @@
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+
+# Copia só os arquivos csproj para aproveitar cache no restore
+COPY GerenciadorTarefas.API/GerenciadorTarefas.API.csproj ./GerenciadorTarefas.API/
+COPY GerenciadorTarefas.Application/GerenciadorTarefas.Application.csproj ./GerenciadorTarefas.Application/
+COPY GerenciadorTarefas.Domain/GerenciadorTarefas.Domain.csproj ./GerenciadorTarefas.Domain/
+COPY GerenciadorTarefas.Infrastructure/GerenciadorTarefas.Infrastructure.csproj ./GerenciadorTarefas.Infrastructure/
+
+RUN dotnet restore ./GerenciadorTarefas.API/GerenciadorTarefas.API.csproj
+
+# Copia todo o código depois de restaurar (para cache funcionar)
+COPY . .
+
+WORKDIR /src/GerenciadorTarefas.API
+RUN dotnet publish -c Release -o /app/publish
+
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+WORKDIR /app
+
+COPY --from=build /app/publish .
+ENTRYPOINT ["dotnet", "GerenciadorTarefas.API.dll"]

@@ -1,54 +1,62 @@
-# Gerenciador de Tarefas (.NET 8)
+AplicaÃ§Ã£o completa para gerenciamento de tarefas, com backend em .NET 8 (API RESTful) e frontend em Angular + Angular Material.
 
-API para gerenciamento de tarefas, construída em .NET 8, utilizando Entity Framework Core e arquitetura em camadas.
+## Como executar
 
-## Como rodar
+### Usando Docker (recomendado)
 
-1. **Configuração do banco de dados**
-   - Configure a string de conexão no `appsettings.json` do projeto `GerenciadorTarefas.API`.
+1. Certifique-se de ter o Docker instalado.
+2. No diretÃ³rio raiz do projeto, execute:
+   ```
+   docker compose -f docker/docker-compose.yml up --build
+   ```
+3. Acesse o frontend em: `http://localhost:8080`
+4. Acesse a API (Swagger) em: `http://localhost:5000/swagger`
 
-2. **Migrations e atualização do banco**
-   - Para rodar as migrations do EF, especifique o projeto de contexto com `--context` ou `--project`:
-     ```
-     dotnet ef migrations add InitialCreate --project ../GerenciadorTarefas.Infrastructure --startup-project . --context AppDbContext
-     ```
-   - Depois:
-     ```
-     dotnet ef database update
-     ```
+### Manualmente
 
-3. **Executando a API**
-   - No diretório do projeto `GerenciadorTarefas.API`:
-     ```
-     dotnet run
-     ```
-   - Acesse a documentação Swagger em: `https://localhost:<porta>/swagger`
+**Backend (.NET 8):**
+1. Configure a string de conexÃ£o no `appsettings.json` do projeto `GerenciadorTarefas.API`.
+2. Execute as migrations:
+   ```
+   dotnet ef migrations add InitialCreate --project ../GerenciadorTarefas.Infrastructure --startup-project . --context AppDbContext
+   dotnet ef database update
+   ```
+3. Inicie a API:
+   ```
+   dotnet run
+   ```
+   Acesse o Swagger: `https://localhost:<porta>/swagger`
 
-## Estrutura do Projeto
+**Frontend (Angular):**
+1. No diretÃ³rio do frontend, instale as dependÃªncias:
+   ```
+   npm install
+   ```
+2. Execute o projeto:
+   ```
+   ng serve
+   ```
+   Acesse: `http://localhost:4200`
 
-- **GerenciadorTarefas.API**: Camada de apresentação (controllers, configuração da aplicação).
-- **GerenciadorTarefas.Application**: Handlers e comandos para orquestração das operações.
-- **GerenciadorTarefas.Domain**: Entidades, enums e interfaces de domínio.
-- **GerenciadorTarefas.Infrastructure**: Implementação do repositório e contexto do EF Core.
+## Funcionalidades
 
-## Principais Funcionalidades
+- **CRUD de Tarefas:** criar, listar, editar, alterar status e remover.
+- **Filtro por status:** visualize tarefas por situaÃ§Ã£o.
+- **Interface responsiva:** visual moderno, adaptado para desktop e mobile.
+- **Modal de ediÃ§Ã£o:** ediÃ§Ã£o rÃ¡pida e intuitiva das tarefas.
 
-- **CRUD de Tarefas**:
-  - Criar, listar, editar, alterar status e remover tarefas.
-- **Status da Tarefa**:
-  - `Pendente`, `EmAndamento`, `Concluida`.
+## Endpoints principais
 
-## Endpoints
+- `POST /api/tarefas` â€” Criar tarefa
+- `GET /api/tarefas` â€” Listar tarefas
+- `PATCH /api/tarefas/{id}` â€” Editar tarefa
+- `PATCH /api/tarefas/{id}/status` â€” Alterar status
+- `DELETE /api/tarefas/{id}` â€” Remover tarefa
 
-- `POST /api/tarefas` - Criar tarefa
-- `GET /api/tarefas` - Listar tarefas
-- `PATCH /api/tarefas/{id}` - Editar tarefa
-- `PATCH /api/tarefas/{id}/status` - Alterar status
-- `DELETE /api/tarefas/{id}` - Remover tarefa
+## Estrutura
 
-## Observações
+- **Backend:** API RESTful, arquitetura em camadas, Entity Framework Core, PostgreSQL.
+- **Frontend:** Angular, Angular Material
+- **Docker:** OrquestraÃ§Ã£o de containers para banco de dados, backend e frontend.
 
-- Projeto utiliza injeção de dependência e segue boas práticas de separação de responsabilidades.
-- O contexto do banco de dados é configurado para PostgreSQL via `UseNpgsql`.
-
----
+## ObservaÃ§Ãµes

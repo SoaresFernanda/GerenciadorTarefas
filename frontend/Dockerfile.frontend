@@ -1,0 +1,16 @@
+
+FROM node:20 AS build
+
+WORKDIR /app
+COPY gerenciador-tarefas-frontend/ ./
+
+RUN npm ci
+RUN npx ng build --configuration production --project gerenciador-tarefas-frontend
+
+
+FROM nginx:alpine AS production
+
+COPY --from=build /app/dist/gerenciador-tarefas-frontend/browser /usr/share/nginx/html
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
