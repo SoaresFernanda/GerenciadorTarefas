@@ -1,0 +1,64 @@
+:host ::ng-deep .mat-dialog-container {
+    padding: 32px 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(33, 150, 243, 0.12);
+    background: #fff;
+    max-width: 420px;
+}
+
+h2[mat-dialog-title] {
+    font-size: 1.5rem;
+    color: #006A6A;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.mat-form-field.w-full {
+    width: 100%;
+}
+
+textarea[matInput] {
+    min-height: 80px;
+    resize: vertical;
+}
+
+[mat-dialog-actions] {
+    margin-top: 12px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+button[mat-button] {
+    min-width: 90px;
+    font-weight: 500;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: rgba(33, 150, 243, 0.12);
+    font-weight: 600;
+}
+
+@media (max-width: 500px) {
+    :host ::ng-deep .mat-dialog-container {
+        padding: 16px 8px;
+        max-width: 98vw;
+    }
+    h2[mat-dialog-title] {
+        font-size: 1.1rem;
+    }
+}
+
+:host ::ng-deep .mat-dialog-container {
+    max-height: 90vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+}

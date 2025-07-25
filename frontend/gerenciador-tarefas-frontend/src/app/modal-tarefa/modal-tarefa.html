@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>{{ data?.id ? 'Editar Tarefa' : 'Nova Tarefa' }}</h2>
+
+<form [formGroup]="form" (ngSubmit)="salvar()" mat-dialog-content>
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Título</mat-label>
+    <input matInput formControlName="titulo" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Descrição</mat-label>
+    <textarea matInput formControlName="descricao"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-full" *ngIf="isEdicao">
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="status">
+      <mat-option [value]="0">Pendente</mat-option>
+      <mat-option [value]="1">Em andamento</mat-option>
+      <mat-option [value]="2">Concluída</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <div mat-dialog-actions align="end">
+    <button mat-button type="button" (click)="fechar()">Cancelar</button>
+    <button mat-button (click)="salvar()">Salvar</button>
+  </div>
+</form>
